@@ -1,22 +1,16 @@
 {
-  "name": "cardex_backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cardex-backend",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EmmanuelGG01/cardex_backend.git"
-  },
-  "author": "Emmanuel",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EmmanuelGG01/cardex_backend/issues"
-  },
-  "homepage": "https://github.com/EmmanuelGG01/cardex_backend#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
   }
 }
