@@ -1,0 +1,22 @@
+{
+  "name": "cardex_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmmanuelGG01/cardex_backend.git"
+  },
+  "author": "Emmanuel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmmanuelGG01/cardex_backend/issues"
+  },
+  "homepage": "https://github.com/EmmanuelGG01/cardex_backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
