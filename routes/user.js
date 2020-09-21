@@ -6,23 +6,52 @@ var router = express.Router();
 /* GET students listing. */
 router.get('/', function(req, res, next) {
   //res.send('GET respond with a resource');
-  console.log('Body: ');
-  console.log(req.body);
   var user =  new userModel();
-  userModel.get(function (err,user){
-    if(err){
-      res.json({
-        status: "Error",
-        massage: err
-      });
+  console.log(req.query);
+  var nameFilter = req.query.name;
+  var hobbyFilter = req.query.hobby;
+  console.log(nameFilter,hobbyFilter);
+  if(nameFilter || hobbyFilter){
+    console.log("Consultar por filtro");
+    var queryFilter = {};
+    if(nameFilter && hobbyFilter){
+      queryFilter = {name: nameFilter,hobby: hobbyFilter};
+    }else if (nameFilter) {
+      queryFilter = {name: nameFilter}
     }else{
-      res.json({
-        status: "Success",
-        message: "Got User Successfully",
-        data: user
-      });
+      queryFilter = {hobby: hobbyFilter}
     }
-  });
+    userModel.find(queryFilter, function (err, user){
+      if(err){
+        res.json({
+          status: "Error",
+          message: err
+        });
+      }else{
+        res.json({
+          status: "Success",
+          message: "Consult Filter",
+          data: user
+        });
+      }
+    });
+  }else{
+
+    userModel.get(function (err,user){
+      if(err){
+        res.json({
+          status: "Error",
+          massage: err
+        });
+      }else{
+        res.json({
+          status: "Success",
+          message: "Got User Successfully",
+          data: user
+        });
+      }
+    });
+  }
 });
 
 router.post('/', function(req, res, next) {
