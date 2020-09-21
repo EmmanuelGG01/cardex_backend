@@ -50,12 +50,52 @@ router.post('/', function(req, res, next) {
 
 });
 
-router.put('/', function(req,res,next){
-  res.send('PUT respond with a resource');
+router.put('/:userId', function(req,res,next){
+  console.log('Body: ');
+  console.log(req.body);
+  console.log(req.params.userId);
+  var user = new userModel();
+  userModel.findById(req.params.userId, function (err, user){
+    if(err){
+      res.send(err);
+    }
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.telephone = req.body.telephone;
+    user.password = req.body.password;
+    user.age = req.body.age;
+    user.gender = req.body.gender;
+    user.hobby = req.body.hobby;
+    user.registrationdate = req.body.registrationdate;
+    // Save and check errors
+    user.save(function (err){
+      if(err){
+        res.json(err)
+      }else{
+        res.json({
+          massage: "User Updated Successfully",
+          data: user
+        });
+      }
+    });
+  });
 });
 
-router.delete('/',function(res,req,next){
-  res.send('DELETE respond with a resource');
+router.delete('/:userId', function(req,res,next){
+  console.log('Body: ');
+  console.log(req.body);
+  console.log(req.params.userId);
+  userModel.deleteOne({
+    _id: req.params.userId
+  }, function (err,contact){
+    if(err){
+      res.send(err);
+    }else{
+      res.json({
+        status: "Success",
+        message: 'User Deleted'
+      });
+    }
+  });
 });
-
 module.exports = router;
