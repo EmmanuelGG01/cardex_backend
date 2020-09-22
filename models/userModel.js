@@ -18,7 +18,7 @@ var userSchema = mongoose.Schema({
     required: true
   },
   age: {
-    type: String,
+    type: Number,
     required: true
   },
   gender: {
@@ -30,7 +30,7 @@ var userSchema = mongoose.Schema({
     required: true
   },
   registrationdate: {
-    type: String,
+    type: Date,
     required: true
   },
 });
