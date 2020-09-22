@@ -10,8 +10,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user');
 var jwt = require('jsonwebtoken');
 var config = require('./configs/config');
+var cors = require('cors');
 
 var app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
