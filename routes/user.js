@@ -1,6 +1,7 @@
 var userModel = require('../models/userModel');
 var express = require('express');
 var router = express.Router();
+var app = require('../app');
 
 /* GET students listing. */
 router.get('/', function(req, res, next) {
@@ -131,7 +132,7 @@ router.get('/male/adult', function (req,res,next){
   //res.send('GET respond with a resource');
   var user = new userModel();
   var queryFilter = {};
-  queryFilter ={'age': {$gt: 18},gender:'male'},{name:1,telephone: 2, hobby:3}
+  queryFilter ={age: {$gt: 18},gender:'male'},{name:1,telephone: 2, hobby:3}
 
   userModel.find(queryFilter ,  function (err,user){
     if(err){
